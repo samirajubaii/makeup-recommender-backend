@@ -1,7 +1,18 @@
+# Dependencies
 node_modules
-# Keep environment variables out of version control
+
+# Environment variables
 .env
 
+# Prisma generated files
 /src/generated/prisma
 
-/src/generated/prisma
+# Uploads (recommended if you don't want images in GitHub)
+uploads
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db

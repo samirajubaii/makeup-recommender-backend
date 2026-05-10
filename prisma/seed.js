@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { PrismaClient } = require("@prisma/client");
 const bcrypt = require("bcryptjs");
 
@@ -9,28 +10,32 @@ async function main() {
     // ---------------------------
     // 1) Create Admin (safe)
     // ---------------------------
-    const adminEmail = "admin@example.com";
+  const adminEmail = process.env.ADMIN_EMAIL;
+const adminPassword = process.env.ADMIN_PASSWORD;
 
-    const existingAdmin = await prisma.user.findUnique({
-        where: { email: adminEmail },
+if (!adminEmail || !adminPassword) {
+    throw new Error("❌ Missing ADMIN_EMAIL or ADMIN_PASSWORD in environment variables");
+}
+const existingAdmin = await prisma.user.findUnique({
+    where: { email: adminEmail },
+});
+
+if (!existingAdmin) {
+    const hashedPassword = await bcrypt.hash(adminPassword, 10);
+
+    await prisma.user.create({
+        data: {
+            name: "Admin",
+            email: adminEmail,
+            passwordHash: hashedPassword,
+            role: "admin",
+        },
     });
 
-    if (!existingAdmin) {
-        const hashedPassword = await bcrypt.hash("adminPassword", 10);
-
-        await prisma.user.create({
-            data: {
-                name: "Admin",
-                email: adminEmail,
-                passwordHash: hashedPassword,
-                role: "admin",
-            },
-        });
-
-        console.log("✅ Admin user created: admin@example.com / adminPassword");
-    } else {
-        console.log("ℹ️ Admin already exists");
-    }
+    console.log(`✅ Admin user created: ${adminEmail}`);
+} else {
+    console.log("ℹ️ Admin already exists");
+}
 
     // ---------------------------
     // 2) Categories
