@@ -1,0 +1,47 @@
+[
+    {
+        "id": "f1",
+        "type": "foundation",
+        "brand": "Maybelline",
+        "name": "Fit Me",
+        "shade": "220 Natural Beige",
+        "tone": "Medium",
+        "undertone": "Warm"
+    },
+    {
+        "id": "f2",
+        "type": "foundation",
+        "brand": "Maybelline",
+        "name": "Fit Me",
+        "shade": "128 Warm Nude",
+        "tone": "Light",
+        "undertone": "Warm"
+    },
+    {
+        "id": "f3",
+        "type": "foundation",
+        "brand": "L'Oréal",
+        "name": "True Match",
+        "shade": "3N",
+        "tone": "Medium",
+        "undertone": "Neutral"
+    },
+    {
+        "id": "c1",
+        "type": "concealer",
+        "brand": "NARS",
+        "name": "Radiant Creamy",
+        "shade": "Custard",
+        "tone": "Medium",
+        "undertone": "Warm"
+    },
+    {
+        "id": "c2",
+        "type": "concealer",
+        "brand": "Maybelline",
+        "name": "Instant Age Rewind",
+        "shade": "122 Sand",
+        "tone": "Medium",
+        "undertone": "Neutral"
+    }
+]

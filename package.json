@@ -1,0 +1,32 @@
+{
+  "name": "makeup-recommender-backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@prisma/client": "^6.19.2",
+    "@tensorflow/tfjs": "^4.22.0",
+    "@vladmandic/face-api": "^1.7.15",
+    "bcryptjs": "^3.0.3",
+    "canvas": "^3.2.1",
+    "color-convert": "^1.9.3",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "face-api.js": "^0.22.2",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.0.2",
+    "prisma": "^6.19.2",
+    "sharp": "^0.34.5"
+  }
+}

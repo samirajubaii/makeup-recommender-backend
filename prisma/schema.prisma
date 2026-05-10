@@ -1,0 +1,166 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+  role         String   @default("user")
+  cart         Cart?
+  orders       Order[]
+}
+
+model Brand {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  logoUrl   String?
+  products  Product[]
+  createdAt DateTime  @default(now())
+}
+
+model Category {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  products  Product[]
+  createdAt DateTime  @default(now())
+}
+
+enum Finish {
+  MATTE
+  NATURAL
+  DEWY
+}
+
+model Product {
+  id                     String  @id @default(cuid())
+  name                   String
+  description            String?
+  imageUrl               String?
+  price                  Float
+  stock                  Int     @default(0)
+
+  brandId                String
+  brand                  Brand   @relation(fields: [brandId], references: [id])
+
+  categoryId             String
+  category               Category @relation(fields: [categoryId], references: [id])
+
+  shades                 Shade[]
+
+  finish                 Finish?
+  suitableForAllSkinTypes Boolean @default(false)
+  
+
+  createdAt              DateTime @default(now())
+  cartItems              CartItem[]
+  orderItems             OrderItem[]
+}
+
+
+model Shade {
+  id        String @id @default(cuid())
+  name      String
+  tone      String
+  undertone String
+
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+
+  cartItems  CartItem[]
+  orderItems OrderItem[]
+}
+
+model Cart {
+  id        String     @id @default(cuid())
+  userId    String     @unique
+  user      User       @relation(fields: [userId], references: [id])
+  items     CartItem[]
+  updatedAt DateTime   @updatedAt
+  createdAt DateTime   @default(now())
+}
+
+model CartItem {
+  id     String @id @default(cuid())
+  cartId String
+  cart   Cart   @relation(fields: [cartId], references: [id], onDelete: Cascade)
+
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+
+  shadeId String? // user may choose a shade
+  shade   Shade?  @relation(fields: [shadeId], references: [id])
+
+  quantity  Int   @default(1)
+  unitPrice Float // store price at time of adding to cart
+
+  createdAt DateTime @default(now())
+
+  @@unique([cartId, productId, shadeId]) // prevent duplicates
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  SHIPPED
+  DELIVERED
+  CANCELED
+}
+enum PaymentMethod {
+  COD
+}
+
+enum PaymentStatus {
+  UNPAID
+  PAID
+}
+
+model Order {
+  id            String        @id @default(cuid())
+  userId        String
+  user          User          @relation(fields: [userId], references: [id])
+
+  status        OrderStatus   @default(PENDING)
+  total         Float
+
+  paymentMethod PaymentMethod @default(COD)
+  paymentStatus PaymentStatus @default(UNPAID)
+
+  phone        String?
+  addressLine1 String?
+  addressLine2 String?
+  city         String?
+  notes        String?
+
+  items         OrderItem[]
+  createdAt     DateTime      @default(now())
+}
+
+
+model OrderItem {
+  id      String @id @default(cuid())
+  orderId String
+  order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+
+  shadeId String?
+  shade   Shade?  @relation(fields: [shadeId], references: [id])
+
+  quantity  Int
+  unitPrice Float
+}
