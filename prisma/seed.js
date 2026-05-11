@@ -96,7 +96,7 @@ if (!existingAdmin) {
     // ---------------------------
     const products = [
         // ---------------- Foundation ----------------
-        { name: "Fit Me Foundation", brand: "Maybelline", category: "Foundation",imageUrl: "/uploads/Fit Me Foundation.jpg", finish: "NATURAL", price: 12.99, stock: 80 },
+        { name: "Fit Me Foundation", brand: "Maybelline", category: "Foundation",imageUrl: "/uploads/fit-me-foundation.jpg", finish: "NATURAL", price: 12.99, stock: 80 },
         { name: "Super Stay Foundation", brand: "Maybelline", category: "Foundation", finish: "MATTE", price: 13.99, stock: 70 },
         { name: "True Match Foundation", brand: "L'Oréal Paris", category: "Foundation", finish: "NATURAL", price: 15.99, stock: 65 },
         { name: "Infallible Fresh Wear Foundation", brand: "L'Oréal Paris", category: "Foundation", finish: "NATURAL", price: 16.99, stock: 60 },
@@ -149,32 +149,37 @@ if (!existingAdmin) {
     // 6) Insert products (+ shades when needed)
     // ---------------------------
     for (const p of products) {
-        const brandId = brands[p.brand].id;
-        const categoryId = categories[p.category].id;
+    const brandId = brands[p.brand].id;
+    const categoryId = categories[p.category].id;
 
-        const existing = await prisma.product.findFirst({
-            where: { name: p.name, brandId, categoryId },
-        });
+    const existing = await prisma.product.findFirst({
+        where: {
+            name: p.name,
+            brandId,
+            categoryId,
+        },
+    });
 
-       const product = await prisma.product.upsert({
-    where: {
-        name: p.name,
-    },
-    update: {
-        imageUrl: p.imageUrl,
-    },
-    create: {
-        name: p.name,
-        description: null,
-        imageUrl: p.imageUrl,
-        price: p.price,
-        stock: p.stock,
-        brandId,
-        categoryId,
-        finish: p.finish,
-        suitableForAllSkinTypes: true,
-    },
-});
+    const product = existing
+        ? await prisma.product.update({
+              where: { id: existing.id },
+              data: {
+                  imageUrl: p.imageUrl,
+              },
+          })
+        : await prisma.product.create({
+              data: {
+                  name: p.name,
+                  description: null,
+                  imageUrl: p.imageUrl,
+                  price: p.price,
+                  stock: p.stock,
+                  brandId,
+                  categoryId,
+                  finish: p.finish,
+                  suitableForAllSkinTypes: true,
+              },
+          });
 
         // Only create shades for Foundation & Concealer
         if (p.category === "Foundation" || p.category === "Concealer") {
