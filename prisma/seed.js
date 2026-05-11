@@ -96,7 +96,7 @@ if (!existingAdmin) {
     // ---------------------------
     const products = [
         // ---------------- Foundation ----------------
-        { name: "Fit Me Foundation", brand: "Maybelline", category: "Foundation", finish: "NATURAL", price: 12.99, stock: 80 },
+        { name: "Fit Me Foundation", brand: "Maybelline", category: "Foundation",imageUrl: "/uploads/fit-me-foundation.jpg", finish: "NATURAL", price: 12.99, stock: 80 },
         { name: "Super Stay Foundation", brand: "Maybelline", category: "Foundation", finish: "MATTE", price: 13.99, stock: 70 },
         { name: "True Match Foundation", brand: "L'Oréal Paris", category: "Foundation", finish: "NATURAL", price: 15.99, stock: 65 },
         { name: "Infallible Fresh Wear Foundation", brand: "L'Oréal Paris", category: "Foundation", finish: "NATURAL", price: 16.99, stock: 60 },
@@ -162,7 +162,7 @@ if (!existingAdmin) {
                 data: {
                     name: p.name,
                     description: null,
-                    imageUrl: null,
+                    imageUrl: p.imageUrl,
                     price: p.price,
                     stock: p.stock,
                     brandId,
