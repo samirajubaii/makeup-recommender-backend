@@ -156,21 +156,25 @@ if (!existingAdmin) {
             where: { name: p.name, brandId, categoryId },
         });
 
-        const product =
-            existing ||
-            (await prisma.product.create({
-                data: {
-                    name: p.name,
-                    description: null,
-                    imageUrl: p.imageUrl,
-                    price: p.price,
-                    stock: p.stock,
-                    brandId,
-                    categoryId,
-                    finish: p.finish,
-                    suitableForAllSkinTypes: true,
-                },
-            }));
+       const product = await prisma.product.upsert({
+    where: {
+        name: p.name,
+    },
+    update: {
+        imageUrl: p.imageUrl,
+    },
+    create: {
+        name: p.name,
+        description: null,
+        imageUrl: p.imageUrl,
+        price: p.price,
+        stock: p.stock,
+        brandId,
+        categoryId,
+        finish: p.finish,
+        suitableForAllSkinTypes: true,
+    },
+});
 
         // Only create shades for Foundation & Concealer
         if (p.category === "Foundation" || p.category === "Concealer") {
