@@ -97,39 +97,39 @@ if (!existingAdmin) {
     const products = [
         // ---------------- Foundation ----------------
         { name: "Fit Me Foundation", brand: "Maybelline", category: "Foundation",imageUrl: "/uploads/fit-me-foundation.jpg", finish: "NATURAL", price: 12.99, stock: 80 },
-        { name: "Super Stay Foundation", brand: "Maybelline", category: "Foundation", finish: "MATTE", price: 13.99, stock: 70 },
-        { name: "True Match Foundation", brand: "L'Oréal Paris", category: "Foundation", finish: "NATURAL", price: 15.99, stock: 65 },
-        { name: "Infallible Fresh Wear Foundation", brand: "L'Oréal Paris", category: "Foundation", finish: "NATURAL", price: 16.99, stock: 60 },
-        { name: "Pro Filt'r Foundation", brand: "Fenty Beauty", category: "Foundation", finish: "MATTE", price: 39.0, stock: 40 },
-        { name: "Studio Fix Fluid", brand: "MAC", category: "Foundation", finish: "MATTE", price: 38.0, stock: 35 },
+        { name: "Super Stay Foundation", brand: "Maybelline", category: "Foundation",imageUrl: "/uploads/Super-Stay-Foundation.jpg",finish: "MATTE", price: 13.99, stock: 70 },
+        { name: "True Match Foundation", brand: "L'Oréal Paris", category: "Foundation", imageUrl: "/uploads/True-Match-Foundation.jpg",finish: "NATURAL", price: 15.99, stock: 65 },
+        { name: "Infallible Fresh Wear Foundation", brand: "L'Oréal Paris", category: "Foundation",imageUrl: "/uploads/Infallible-Fresh-Wear-Foundation.jpg", finish: "NATURAL", price: 16.99, stock: 60 },
+        { name: "Pro Filt'r Foundation", brand: "Fenty Beauty", category: "Foundation", imageUrl: "/uploads/Pro-Filt'r-Foundation.jpg",finish: "MATTE", price: 39.0, stock: 40 },
+        { name: "Studio Fix Fluid", brand: "MAC", category: "Foundation",imageUrl: "/uploads/Studio-Fix-Fluid.jpg", finish: "MATTE", price: 38.0, stock: 35 },
 
         // ---------------- Concealer ----------------
-        { name: "Fit Me Concealer", brand: "Maybelline", category: "Concealer", finish: "NATURAL", price: 10.99, stock: 100 },
-        { name: "Instant Age Rewind Concealer", brand: "Maybelline", category: "Concealer", finish: "NATURAL", price: 11.5, stock: 90 },
-        { name: "Infallible Full Wear Concealer", brand: "L'Oréal Paris", category: "Concealer", finish: "MATTE", price: 12.99, stock: 80 },
-        { name: "Radiant Creamy Concealer", brand: "NARS", category: "Concealer", finish: "NATURAL", price: 32.0, stock: 35 },
-        { name: "16HR Camo Concealer", brand: "e.l.f.", category: "Concealer", finish: "MATTE", price: 7.0, stock: 120 },
+        { name: "Fit Me Concealer", brand: "Maybelline", category: "Concealer",imageUrl: "/uploads/Fit-Me-Concealer.jpg", finish: "NATURAL", price: 10.99, stock: 100 },
+        { name: "Instant Age Rewind Concealer", brand: "Maybelline", category: "Concealer", imageUrl: "/uploads/Instant-Age-Rewind-Concealer.jpg", finish: "NATURAL", price: 11.5, stock: 90 },
+        { name: "Infallible Full Wear Concealer", brand: "L'Oréal Paris", category: "Concealer",imageUrl: "/uploads/Infallible-Full-Wear-Concealer.jpg", finish: "MATTE", price: 12.99, stock: 80 },
+        { name: "Radiant Creamy Concealer", brand: "NARS", category: "Concealer",imageUrl: "/uploads/Radiant-Creamy-Concealer.jpg", finish: "NATURAL", price: 32.0, stock: 35 },
+        { name: "16HR Camo Concealer", brand: "e.l.f.", category: "Concealer",imageUrl: "/uploads/16HR-Camo-Concealer.jpg", finish: "MATTE", price: 7.0, stock: 120 },
 
         // ---------------- Blush ----------------
-        { name: "Powder Blush - Melba", brand: "MAC", category: "Blush", finish: null, price: 28.0, stock: 35 },
-        { name: "Orgasm Blush", brand: "NARS", category: "Blush", finish: null, price: 32.0, stock: 30 },
-        { name: "Sweet Cheeks Blush", brand: "NYX", category: "Blush", finish: null, price: 9.99, stock: 80 },
-        { name: "Putty Blush", brand: "e.l.f.", category: "Blush", finish: null, price: 7.0, stock: 100 },
+        { name: "Powder Blush - Melba", brand: "MAC", category: "Blush",imageUrl: "/uploads/Powder-Blush-Melba.jpg", finish: null, price: 28.0, stock: 35 },
+        { name: "Orgasm Blush", brand: "NARS", category: "Blush",imageUrl: "/uploads/Orgasm-Blush.jpg", finish: null, price: 32.0, stock: 30 },
+        { name: "Sweet Cheeks Blush", brand: "NYX", category: "Blush",imageUrl: "/uploads/Sweet-Cheeks-Blush.jpg", finish: null, price: 9.99, stock: 80 },
+        { name: "Putty Blush", brand: "e.l.f.", category: "Blush",imageUrl: "/uploads/Putty-Blush.png", finish: null, price: 7.0, stock: 100 },
 
         // ---------------- Mascara ----------------
-        { name: "Lash Sensational Mascara", brand: "Maybelline", category: "Mascara", finish: null, price: 9.99, stock: 120 },
-        { name: "Sky High Mascara", brand: "Maybelline", category: "Mascara", finish: null, price: 11.99, stock: 110 },
+        { name: "Lash Sensational Mascara", brand: "Maybelline", category: "Mascara", imageUrl: "/uploads/Lash-Sensational-Mascara.jpg",finish: null, price: 9.99, stock: 120 },
+        { name: "Sky High Mascara", brand: "Maybelline", category: "Mascara",imageUrl: "/uploads/Sky-High-Mascara.jpg", finish: null, price: 11.99, stock: 110 },
         { name: "Better Than Sex Mascara", brand: "Dior", category: "Mascara", finish: null, price: 28.0, stock: 40 },
 
         // ---------------- Highlighter ----------------
-        { name: "Killawatt Highlighter", brand: "Fenty Beauty", category: "Highlighter", finish: null, price: 40.0, stock: 25 },
-        { name: "Baked Highlighter", brand: "Revlon", category: "Highlighter", finish: null, price: 12.99, stock: 70 },
-        { name: "Born To Glow Highlighter", brand: "NYX", category: "Highlighter", finish: null, price: 10.0, stock: 80 },
+        { name: "Killawatt Highlighter", brand: "Fenty Beauty", category: "Highlighter", imageUrl: "/uploads/Killawatt-Highlighter.jpg",finish: null, price: 40.0, stock: 25 },
+        { name: "Baked Highlighter", brand: "Revlon", category: "Highlighter",imageUrl: "/uploads/Baked-Highlighter.png", finish: null, price: 12.99, stock: 70 },
+        { name: "Born To Glow Highlighter", brand: "NYX", category: "Highlighter",imageUrl: "/uploads/Born-To-Glow-Highlighter.png", finish: null, price: 10.0, stock: 80 },
 
         // ---------------- Eyeshadow ----------------
-        { name: "Nude Eyeshadow Palette", brand: "Huda Beauty", category: "Eyeshadow", finish: null, price: 35.0, stock: 30 },
-        { name: "Ultimate Shadow Palette", brand: "NYX", category: "Eyeshadow", finish: null, price: 18.0, stock: 45 },
-        { name: "Bite Size Eyeshadow", brand: "e.l.f.", category: "Eyeshadow", finish: null, price: 3.0, stock: 120 },
+        { name: "Nude Eyeshadow Palette", brand: "Huda Beauty", category: "Eyeshadow", imageUrl: "/uploads/Nude-Eyeshadow-Palette.jpg",finish: null, price: 35.0, stock: 30 },
+        { name: "Ultimate Shadow Palette", brand: "NYX", category: "Eyeshadow",imageUrl: "/uploads/Ultimate-Shadow-Palette.jpg", finish: null, price: 18.0, stock: 45 },
+        { name: "Bite Size Eyeshadow", brand: "e.l.f.", category: "Eyeshadow",imageUrl: "/uploads/Bite-Size-Eyeshadow.png", finish: null, price: 3.0, stock: 120 },
     ];
 
     // ---------------------------

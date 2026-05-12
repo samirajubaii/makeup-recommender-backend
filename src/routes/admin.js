@@ -8,7 +8,7 @@ const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
 router.use(verifyToken, requireAdmin);
-const UPLOAD_DIR = path.join(__dirname, "..", "uploads");
+const UPLOAD_DIR = path.join(__dirname, "../uploads");
 if (!fs.existsSync(UPLOAD_DIR)) fs.mkdirSync(UPLOAD_DIR, { recursive: true });
 
 
